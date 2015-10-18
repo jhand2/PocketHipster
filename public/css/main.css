@@ -43,6 +43,10 @@ h1 {
 	overflow: hidden;
 }
 
+#socialbutton {
+	text-align: center;
+}
+
 #hipstertitle {
 	/*color: rgba(89, 165, 165, 1);*/
 	color: rgba(114, 140, 140, 1);
@@ -136,6 +140,10 @@ a.selected {
   z-index:100;
 }
 
+#close {
+	max-height: 20px;
+}
+
 .messagepop {
 	background-color:#FFFFFF;
 	border:1px solid #999999;
@@ -154,6 +162,7 @@ a.selected {
 #close-popup {
 	position: absolute;
 	margin-left: 90%;
+	background: transparent;
 
 }
 
