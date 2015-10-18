@@ -43,8 +43,8 @@
 
 		$("#upload-url").on("click", function() {
 			var popup = $('#popup');
+			popup.children('#uppicture').remove();
 			popup.append('<img id="uppicture" src='+ $("#paste-url").val() +' />');
-			$('#uppicture').css('max-width', '90%');
 			//ajax call to clarifai
 			console.log("test");
 			$.ajax( 
