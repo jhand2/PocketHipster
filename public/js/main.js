@@ -1,6 +1,33 @@
 (function() {
 	window.addEventListener("load", function() {
+		// this.accessToken = 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB';
 		// adding multiple tag lines....
+
+		function deselect(e) {
+  			$('.pop').slideFadeToggle(function() {
+    			e.removeClass('selected');
+  			});    
+		}
+
+		$('#upload-url').on('click', function() {
+    		if($(this).hasClass('selected')) {
+     			deselect($(this));               
+    		} else {
+      			$(this).addClass('selected');
+      			$('.pop').slideFadeToggle();
+    		}
+    		return false;
+  		});
+
+  		$('.close').on('click', function() {
+    		deselect($('#contact'));
+    		return false;
+  		});
+
+  		$.fn.slideFadeToggle = function(easing, callback) {
+			return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+		};
+
 		var tagline = new Array();
 		tagline.push("Give us an image and well turn it into feels");
 		tagline.push("Your poetry is too mainstream to belong here");
@@ -9,13 +36,53 @@
 
 		document.getElementById("tagline").innerHTML = 
 			tagline[Math.floor(tagline.length * Math.random())];
-		
+
 		$("#upload-url").on("click", function() {
-			$.ajax("/api/poems", 
-			{
-				"data" : $("#paste-url").val(),
-				"method" : "GET"
-			});
+			//ajax call to clarifai
+			console.log("test");
+			$.ajax( 
+				{
+					'url' : "https://api.clarifai.com/v1/tag/",
+					'data' : { "url" : $("#paste-url").val() },
+					'type' : "POST",
+					'headers' : {
+						'Authorization': 'Bearer ' + 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
+					},
+					'success' : function(data) { sendToServer(data) },
+					'beforeSend' : function() { console.log("before?")},
+					'error' : function(err) { console.log(err) }
+				}
+			);
+
+			//ajax call to our node server
+			function sendToServer(data) {
+				$.ajax( "/api/poems",
+				{
+					'data' : { "data" : data.results[0].result.tag.classes },
+					'dataType' : 'json',
+					'method' : "POST",
+					'success' : function(data) { initPopup(data) }
+				});
+			}
+
+			var initPopup = function(data) {
+				var popup = $('#popup');
+				popup.innerHTML = "";
+				data.forEach(function(tag) {
+					console.log(tag);
+					var p = document.createElement("P");
+					p.innerHTML = tag;
+					popup.append(p);
+					var btn = $('#upload-url');
+		    		if(btn.hasClass('selected')) {
+		     			// deselect($(this));               
+		    		} else {
+		      			btn.addClass('selected');
+		      			$('.pop').slideFadeToggle();
+		    		}
+				});
+	    		return false;
+			}
 		});
 		
 		var f = document.createElement("input");
@@ -27,7 +94,9 @@
 		
 		$("#upload-file").on("click", function() {
 			f.click();
-			//$.ajax("")
+			// $.ajax({
+			// 	'type':
+			// });
 		});
 	});
 	

@@ -1,16 +1,21 @@
 module.exports = function(app) {
 
 	var Markov = require('../markov.js');
-	var datFile = "./public/res/naughtyHarry.dat";
+	var datFile = "./public/res/poems.dat";
 	var markov = Markov(datFile);
 
-	app.get('/api/poems', function(req, res) {
+	app.post('/api/poems', function(req, res) {
+		console.log(req.body);
 
-		var sentence = markov.createLine("the");
-		console.log(sentence);
-		console.log("");
+		var tags = req.body.data;
 
-		res.json();
+		var poemArr = [];
+
+		tags.forEach(function(tag) {
+			poemArr.push(markov.createLine(tag));
+		});		
+
+		res.json(poemArr);
 	});
 
 	app.get('/', function(req, res) {
