@@ -11,13 +11,15 @@ module.exports = function(app) {
 
 		var poemArr = [];
 
-		tags.forEach(function(tag) {
-			console.log(tag);
-			var sentence = markov.createLine(tag)
+		for (var i = 0; i < tags.length; i++) {
+			if (i > 10) {
+				break;
+			}
+			var sentence = markov.createLine(tags[i])
 			if (sentence.trim().split(" ").length > 1) {
 				poemArr.push(sentence);
 			}
-		});		
+		}		
 
 		res.json(poemArr);
 	});
