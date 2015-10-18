@@ -1,4 +1,16 @@
-$(document).ready(
+var clarifai;
+
+//on document ready initiate the clarifai object
+function init() {
+	var clarifai = new Clarifai(
+          {
+            'clientId': 'YNSCk7tVm31FdamgBaSo96DilQhvEXNYxWWT0mIz',
+            'clientSecret': 'NxIHlHgL9U5clqLssqcmFd74ow5vkb9hDYDF8q-Z' 
+          }
+      	);
+}
+
+/*$(document).ready(
   	function(){
       	var clarifai = new Clarifai(
           {
@@ -7,7 +19,7 @@ $(document).ready(
           }
       	);
   	}  
-);
+);*/
 
 var clarifai = new Clarifai(
 	{
