@@ -179,6 +179,8 @@ label {
 #uppicture {
 	max-width: 80%;
 	border: 3px solid black;
-	padding: 5%;
+	border-radius: 50px;
+	margin: auto;
+	margin-left: 10%;
 }
 
