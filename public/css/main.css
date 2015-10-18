@@ -1,15 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300);
 @import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
 
 
 body {
 	margin: 0;
 	font-family: 'Josefin Slab', serif;
-}
-
-.btn {
-	background-color: #bada55;
 }
 
 .input-group {
@@ -25,23 +19,59 @@ h1 {
 }
 
 #header {
-	background-image: url("../image/background.jpg");
+	background-image: url("../image/background-sm.jpg");
 	background-size: cover;
 	background-repeat: none;
+	overflow: hidden;
 }
 
 #hipstertitle {
-	color: white;
-	padding: 19%;
+	color: rgba(114, 140, 140, 1);
+	padding-right: 2%;
+	/*padding: 19%;
 	padding-left: 17%;
-	padding-bottom: 5%;
+	padding-bottom: 10%;*/
+	text-align: center;
+	padding-top: 19%;
+	padding-bottom: 10%;
 }
 
-#url {
-	background: transparent;
-	border: 3px solid black;
-	border-radius: 20px;
-	color: white;
-	padding-left: 5%;
-	padding-right: 5%;
+::-webkit-input-placeholder {
+   color: black;
 }
+
+.buttons {
+	color: black;
+	/*background: rgba(45, 107, 107, 0.46);*/
+	background: rgba(114, 140, 140, 1);
+	border: 3px solid white;
+	border-radius: 20px;
+	padding: 2%;
+	margin: 5%;
+	font-variant: small-caps;
+}
+
+.buttons:focus {
+  outline: none;
+}
+
+#upload-url, #upload-file {
+	width: 80%;
+	text-align: center;
+}
+
+#paste-url {
+	margin: auto;
+	width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+	#header {
+		background-image: url("../image/background.jpg");
+	}
+
+	#hipstertitle {
+		color: white;
+	}
+}
+
