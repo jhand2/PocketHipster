@@ -41,6 +41,10 @@
 			deselect($(this));
 		});
 
+		$("#upload-file").on("click", function () {
+			console.log("file-change");
+		});
+
 		$("#upload-url").on("click", function() {
 			//ajax call to clarifai
 			console.log("test");
