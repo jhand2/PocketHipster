@@ -28,7 +28,7 @@ words = {}
 words["."] = {}
 for post in blogs:
     last = "^"
-    for line in re.split("[\n.]+", post):
+    for line in re.split("[\n.]+", post.lower()):
         for word in line.split(" "):
             if (last not in words):
                 words[last] = {}
