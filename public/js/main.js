@@ -80,6 +80,10 @@
 				var img = $('upload-url').innerHTML;
 				// img = "url('" + img + "');";
 				//$('.messagepopup').style.backgroundImage = img;
+
+				var blur = $('.blur');//.blur();
+				blur.blur();
+
 				var popup = $('#popup');
                 var par = $("#popup p");
                 for(var i = 0; i < par.length; i++) {
