@@ -43,6 +43,10 @@ h1 {
 	overflow: hidden;
 }
 
+#socialbutton {
+	text-align: center;
+}
+
 #hipstertitle {
 	/*color: rgba(89, 165, 165, 1);*/
 	color: rgba(114, 140, 140, 1);
