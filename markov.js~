@@ -22,12 +22,12 @@ module.exports = function(inputfile) {
 		var lines = data.split("\n");
 		for(var i = 0; i < lines.length; i++) {
 			var line = lines[i];
-			var parts = line.split(" ");
+			var parts = line.split("\t");
 			if (parts.length < 2) {
 				continue;
 			}
 			var word = parts[0];
-			var tokens = parts[1].split("\t");
+			var tokens = parts[1].split(" ");
 			if (tokens.length > 0) {
 				words[word] = [];
 
