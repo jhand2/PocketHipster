@@ -33,6 +33,7 @@
 		tagline.push("Your poetry is too mainstream to belong here");
 		tagline.push("It's meh, da best");
 		tagline.push("Not as dope as Disneyland");
+        tagline.push("The Llama's inner goddess");
 
 		document.getElementById("tagline").innerHTML = 
 			tagline[Math.floor(tagline.length * Math.random())];
