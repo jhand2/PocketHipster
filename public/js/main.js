@@ -11,7 +11,7 @@
 
 		$('#upload-url').on('click', function() {
     		if($(this).hasClass('selected')) {
-     			deselect($(this));               
+     			deselect($('#popup'));               
     		} else {
       			$(this).addClass('selected');
       			$('.pop').slideFadeToggle();
@@ -36,6 +36,10 @@
 
 		document.getElementById("tagline").innerHTML = 
 			tagline[Math.floor(tagline.length * Math.random())];
+
+		$('#close-popup').on('click', function() {
+			deselect($(this));
+		});
 
 		$("#upload-url").on("click", function() {
 			//ajax call to clarifai
