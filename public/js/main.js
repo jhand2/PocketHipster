@@ -74,8 +74,14 @@
 				img = "url('" + img + "');";
 				$('.messagepopup').style.backgroundImage = img;
 				var popup = $('#popup');
-				popup.innerHTML = "";
-				data.forEach(function(tag) {
+                var child = popup.children();
+                for(var i = 0; i < child.length; i++) {
+                   if (child[i].id != "close-popup") {
+                       child[i].remove();
+                       i--;
+                   }
+                }
+                data.forEach(function(tag) {
 					console.log(tag);
 					var p = document.createElement("P");
 					p.innerHTML = tag;
