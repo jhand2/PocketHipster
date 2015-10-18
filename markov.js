@@ -2,12 +2,12 @@
 // given an input file in the format
 // startWord \t word:::count word:::count ...
 // and . is a special character for end-line.
-function Markov(inputfile) {
+exports.Markov = function(inputfile) {
 	var fs = require("fs");
 	fs.readFile(inputfile, 'utf8', processData);
 	
 	// array of arrays, keys are words from
-	var words = new Array();
+	var words = [];
 	
 	// datastructure used for word/count pairs
 	function Word(w, c) {
@@ -26,7 +26,7 @@ function Markov(inputfile) {
 			var word = parts[0];
 			var tokens = parts[1].split(" ");
 			if (tokens.length > 0) {
-				words[word] = new Array();
+				words[word] = [];
 				for(var j = 0; j < tokens.length; j++) {
 					var token = tokens[j];
 					var p = token.split(":::");
@@ -40,7 +40,7 @@ function Markov(inputfile) {
 	// creates an array of markov chain's starting with the input array's 
 	// words.
 	function createLines(worda) {
-		var out = new Array();
+		var out = [];
 		for(var i = 0; i < worda.length; i++) {
 			out[i] = createLine(worda[i]);
 		}

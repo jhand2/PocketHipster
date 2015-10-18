@@ -1,0 +1,15 @@
+ {
+	"name": "pocket-hipster",
+	"main": "server.js",
+	"scripts" : {
+		"start": "node server.js"
+	},
+	"dependencies" : {
+		"express" : "~4.5.1",
+		"body-parser" : "~1.4.2",
+		"method-override" : "~2.0.2"
+	},
+	"engines": {
+		"node": "4.1.1"
+	}
+}
