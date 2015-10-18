@@ -1,7 +1,7 @@
 
 apiKey = "fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LXZhhRKjWlV4"
 
-minimumFeed = 500
+minimumFeed = 5000
 
 import urllib2
 import json

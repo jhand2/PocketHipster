@@ -37,8 +37,12 @@ module.exports = function(inputfile) {
 	// words.
 	this.createLines = function (worda) {
 		var out = [];
+        var back = 0;
 		for(var i = 0; i < worda.length; i++) {
-			out[i] = createLine(worda[i]);
+			out[i - back] = createLine(worda[i]);
+            if (out[i - back].trim().split(" ").length < 1 && i > 0) {
+                back++;
+            }
 		}
 		return out;
 	}
