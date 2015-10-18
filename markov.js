@@ -2,12 +2,12 @@
 // given an input file in the format
 // startWord \t word:::count word:::count ...
 // and . is a special character for end-line.
-exports.Markov = function(inputfile) {
+module.exports = function(inputfile) {
 	var fs = require("fs");
 	fs.readFile(inputfile, 'utf8', processData);
 	
 	// array of arrays, keys are words from
-	var words = [];
+	var words = {};
 	
 	// datastructure used for word/count pairs
 	function Word(w, c) {
@@ -23,14 +23,22 @@ exports.Markov = function(inputfile) {
 		for(var i = 0; i < lines.length; i++) {
 			var line = lines[i];
 			var parts = line.split("\t");
+			if (parts.length < 2) {
+				continue;
+			}
 			var word = parts[0];
 			var tokens = parts[1].split(" ");
 			if (tokens.length > 0) {
 				words[word] = [];
+
 				for(var j = 0; j < tokens.length; j++) {
 					var token = tokens[j];
 					var p = token.split(":::");
-					var w = new Word(p[0], parseInt(p[1]));
+					var count = parseInt(p[1]);
+					if (count == NaN)
+						var w = new Word(p[0], 1);
+					else
+						var w = new Word(p[0], count);
 					words[word].push(w);
 				}
 			}
@@ -39,7 +47,7 @@ exports.Markov = function(inputfile) {
 	
 	// creates an array of markov chain's starting with the input array's 
 	// words.
-	function createLines(worda) {
+	this.createLines = function (worda) {
 		var out = [];
 		for(var i = 0; i < worda.length; i++) {
 			out[i] = createLine(worda[i]);
@@ -48,7 +56,7 @@ exports.Markov = function(inputfile) {
 	}
 	
 	// creates a markov chain starting with word
-	function createLine(word) {
+	this.createLine = function (word) {
 		sent = word;
 		var n = getNext(word);
 		while(n != null) {
@@ -77,4 +85,6 @@ exports.Markov = function(inputfile) {
 			}
 		}
 	}
+
+	return this;
 }

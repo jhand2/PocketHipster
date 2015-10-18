@@ -1,19 +1,20 @@
 module.exports = function(app) {
 
-	var Markov = require('Markov');
+	var Markov = require('../markov.js');
+	var datFile = "./public/res/naughtyHarry.dat";
+	var markov = Markov(datFile);
 
-	app.post('/api/poems', function(req, res) {
+	app.get('/api/poems', function(req, res) {
 
-		var markov = Markov(url("../public/res/naughtyHarry.dat"));
-
-		var sentence = markov.createLine("wand");
-
+		var sentence = markov.createLine("the");
 		console.log(sentence);
+		console.log("");
 
 		res.json();
 	});
 
 	app.get('/', function(req, res) {
+		console.log("lol maybe?");
 		res.sendfile('./public/index.html'); //load index.html
 	});
 }
