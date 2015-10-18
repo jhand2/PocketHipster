@@ -79,7 +79,7 @@ h1 {
   outline: none;
 }
 
-.buttons:hover {
+.buttons:hover, .buttons:active {
 	background: rgba(114, 140, 140, 1);
 	border: 3px solid white;
 }
@@ -92,6 +92,15 @@ h1 {
 #paste-url {
 	margin: auto;
 	width: 100%;
+}
+
+footer {
+	background-color: #69BFBF;
+	text-align: center;
+}
+
+#logo {
+	max-height: 100px;
 }
 
 @media screen and (min-width: 768px) {

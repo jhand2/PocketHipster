@@ -6,6 +6,7 @@
 		tagline.push("Give us an image and well turn it into feels");
 		tagline.push("Your poetry is too mainstream to belong here");
 		tagline.push("It's meh, da best");
+		tagline.push("Not as dope as Disneyland");
 
 		document.getElementById("tagline").innerHTML = 
 			tagline[Math.floor(tagline.length * Math.random())];
