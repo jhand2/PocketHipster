@@ -15,6 +15,17 @@
 			});
 		});
 		
+		var f = document.createElement("input");
+		f.type = "file";
+		f.style.visibility = "hidden";
+		f.style.position = "absolute";
+		f.style.top = 0;
+		document.body.appendChild(f);
+		
+		$("#upload-file").on("click", function() {
+			f.click();
+			//$.ajax("")
+		});
 	});
 	
 	
