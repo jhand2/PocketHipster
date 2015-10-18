@@ -4,6 +4,7 @@
 	<title>Pocket Hipster</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="image/tree.png" type="image/gif" rel="shortcut icon"/>
 
 	<!-- jQuery, Bootstrap -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -15,8 +16,29 @@
 	<script type="text/javascript" src="js/clarifai-basic.js"></script>
 </head>
 <body>
-	<h1 class="text-center">Pocket Hipster</h1>
-	<p id="tagline" class="text-center">Give us an image and well turn it into feels</p>
+	<div id="header" class="jumbotron">
+		<div id="hipstertitle">
+			<h1 class="text-center">Pocket Hipster</h1>
+			<p id="tagline" class="text-center"></p>
+		</div>
+		<form class="row">
+			<div class="col-md-offset-3 col-md-6">
+				<div class="row">
+					<div class="col-md-8 col-sm-8">
+						<input id="url" class="input-wide" type="text" placeholder="Paste a url here..." name="Name" autocomplete="Off" />
+					</div>
+					<div class="col-md-4 col-sm-4">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+					</div>
+					<div class="col-md-6 col-sm-6">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="input-group col-xs-8">
 		<input class="form-control" type="text" id="imageLink" placeholder="Enter an image URL...">
 		<div class="input-group-btn">
