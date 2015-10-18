@@ -2,6 +2,32 @@
 	window.addEventListener("load", function() {
 		// this.accessToken = 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB';
 		// adding multiple tag lines....
+
+		function deselect(e) {
+  			$('.pop').slideFadeToggle(function() {
+    			e.removeClass('selected');
+  			});    
+		}
+
+		$('#upload-url').on('click', function() {
+    		if($(this).hasClass('selected')) {
+     			deselect($(this));               
+    		} else {
+      			$(this).addClass('selected');
+      			$('.pop').slideFadeToggle();
+    		}
+    		return false;
+  		});
+
+  		$('.close').on('click', function() {
+    		deselect($('#contact'));
+    		return false;
+  		});
+
+  		$.fn.slideFadeToggle = function(easing, callback) {
+			return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+		};
+
 		var tagline = new Array();
 		tagline.push("Give us an image and well turn it into feels");
 		tagline.push("Your poetry is too mainstream to belong here");
@@ -30,16 +56,32 @@
 
 			//ajax call to our node server
 			function sendToServer(data) {
-				console.log(JSON.stringify(data.results[0].result.tag.classes));
 				$.ajax( "/api/poems",
 				{
 					'data' : { "data" : data.results[0].result.tag.classes },
 					'dataType' : 'json',
 					'method' : "POST",
-					'success' : function(data) {
-						console.log(data);
-					}
+					'success' : function(data) { initPopup(data) }
 				});
+			}
+
+			var initPopup = function(data) {
+				var popup = $('#popup');
+				popup.innerHTML = "";
+				data.forEach(function(tag) {
+					console.log(tag);
+					var p = document.createElement("P");
+					p.innerHTML = tag;
+					popup.append(p);
+					var btn = $('#upload-url');
+		    		if(btn.hasClass('selected')) {
+		     			// deselect($(this));               
+		    		} else {
+		      			btn.addClass('selected');
+		      			$('.pop').slideFadeToggle();
+		    		}
+				});
+	    		return false;
 			}
 		});
 		

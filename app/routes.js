@@ -9,12 +9,11 @@ module.exports = function(app) {
 
 		var tags = req.body.data;
 
-		tags.forEach(function(tag) {
-			console.log(markov.createLine(tag));
-		});
-
 		var poemArr = [];
-		poemArr.push(markov.createLine("the"));
+
+		tags.forEach(function(tag) {
+			poemArr.push(markov.createLine(tag));
+		});		
 
 		res.json(poemArr);
 	});
