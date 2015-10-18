@@ -151,6 +151,11 @@ a.selected {
 	padding: 25px 25px 20px;
 }
 
+#close-popup {
+	position: absolute;
+	
+}
+
 label {
   display: block;
   margin-bottom: 3px;
