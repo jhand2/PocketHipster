@@ -6,10 +6,6 @@ body {
 	font-family: 'Josefin Slab', serif;
 }
 
-.btn {
-	background-color: #bada55;
-}
-
 .input-group {
 	margin:auto;
 }
@@ -50,16 +46,12 @@ h1 {
 	background: rgba(114, 140, 140, 0.55);
 	border: 3px solid white;
 	border-radius: 20px;
-	padding: 1%;
-	padding-left: 2%;
+	padding: 2%;
 	margin: 5%;
 	font-variant: small-caps;
 }
 
 #upload-url, #upload-file {
-	padding: 2%;
-	padding-left: 10%;
-	padding-right: 10%;
 	width: 80%;
 	text-align: center;
 }
