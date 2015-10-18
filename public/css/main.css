@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300);
 @import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
 
 
@@ -32,16 +30,32 @@ h1 {
 
 #hipstertitle {
 	color: white;
-	padding: 19%;
+	/*padding: 19%;
 	padding-left: 17%;
-	padding-bottom: 5%;
+	padding-bottom: 10%;*/
+	text-align: center;
+	padding-top: 19%;
+	padding-bottom: 10%;
 }
 
 #url {
-	background: transparent;
-	border: 3px solid black;
+	background: rgba(45, 107, 107, 0.46);
+	border: 3px solid white;
 	border-radius: 20px;
-	color: white;
-	padding-left: 5%;
-	padding-right: 5%;
+	padding: 1%;
+	padding-left: 2%;
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+.buttons {
+	color: black;
+	background: rgba(45, 107, 107, 0.46);
+	border: 3px solid white;
+	border-radius: 20px;
+	padding: 1%;
+	padding-left: 2%;
+	margin: 3%;
 }

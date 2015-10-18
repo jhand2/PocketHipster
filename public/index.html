@@ -18,29 +18,31 @@
 <body>
 	<div id="header" class="jumbotron">
 		<div id="hipstertitle">
-			<h1 class="text-center">Pocket Hipster</h1>
-			<p id="tagline" class="text-center"></p>
+			<h1>Pocket Hipster</h1>
+			<p id="tagline"></p>
 		</div>
 		<form class="row">
 			<div class="col-md-offset-3 col-md-6">
 				<div class="row">
 					<div class="col-md-8 col-sm-8">
-						<input id="url" class="input-wide" type="text" placeholder="Paste a url here..." name="Name" autocomplete="Off" />
+						<input id="url" class="input-wide buttons" type="text" placeholder="Paste a url here..." name="Name" autocomplete="Off" size="40" />
 					</div>
 					<div class="col-md-4 col-sm-4">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-sm-6">
+						<input class="btn btn-primary buttons" type="submit" value="Upload using URL" />
 					</div>
 					<div class="col-md-6 col-sm-6">
+						<input class="btn btn-primary btn-filled input-wide buttons" type="button" value="Choose a file instead" />
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="input-group col-xs-8">
-		<input class="form-control" type="text" id="imageLink" placeholder="Enter an image URL...">
+		<input class="form-control" type="text" id="imageLink" placeholder="Enter an image URL..." >
 		<div class="input-group-btn">
 			<button id="submitLink" class="btn btn-default">Get Poetic</button>
 		</div>
