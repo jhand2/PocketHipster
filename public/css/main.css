@@ -140,6 +140,10 @@ a.selected {
   z-index:100;
 }
 
+#close {
+	max-height: 20px;
+}
+
 .messagepop {
 	background-color:#FFFFFF;
 	border:1px solid #999999;
@@ -158,6 +162,7 @@ a.selected {
 #close-popup {
 	position: absolute;
 	margin-left: 90%;
+	background: transparent;
 
 }
 
