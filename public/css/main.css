@@ -94,6 +94,11 @@ h1 {
 	width: 100%;
 }
 
+footer {
+	background-color: #69BFBF;
+	text-align: center;
+}
+
 @media screen and (min-width: 768px) {
 	.rect {
 		width: 200px;
