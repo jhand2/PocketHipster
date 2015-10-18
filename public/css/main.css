@@ -140,6 +140,7 @@ footer {
 	.buttons:hover {
 		background: rgba(114, 140, 140, 0.55);
 		border: 3px solid white;
+		color: white;
 	}
 }
 
