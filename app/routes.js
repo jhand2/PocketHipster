@@ -4,13 +4,19 @@ module.exports = function(app) {
 	var datFile = "./public/res/naughtyHarry.dat";
 	var markov = Markov(datFile);
 
-	app.get('/api/poems', function(req, res) {
+	app.post('/api/poems', function(req, res) {
+		console.log(req.body);
 
-		var sentence = markov.createLine("the");
-		console.log(sentence);
-		console.log("");
+		var tags = req.body.data;
 
-		res.json();
+		tags.forEach(function(tag) {
+			console.log(markov.createLine(tag));
+		});
+
+		var poemArr = [];
+		poemArr.push(markov.createLine("the"));
+
+		res.json(poemArr);
 	});
 
 	app.get('/', function(req, res) {
