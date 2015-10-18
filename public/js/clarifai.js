@@ -11,7 +11,7 @@ $(document).ready(
 
 var clarifai = new Clarifai(
 	{
-		'acessToken': 1mrinzNSUpc2mjLYGiuzay3Yw3wXCT
+		'acessToken': 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
 	}
 );
 
