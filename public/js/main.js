@@ -46,6 +46,9 @@
 		});
 
 		$("#upload-url").on("click", function() {
+			var popup = $('#popup');
+			popup.append('<img id="uppicture" src='+ $("#paste-url").val() +' />');
+			$('#uppicture').css('max-width', '90%');
 			//ajax call to clarifai
 			console.log("test");
 			$.ajax( 
@@ -74,9 +77,15 @@
 			}
 
 			var initPopup = function(data) {
+				var img = $('upload-url').innerHTML;
+				// img = "url('" + img + "');";
+				//$('.messagepopup').style.backgroundImage = img;
 				var popup = $('#popup');
-				popup.innerHTML = "";
-				data.forEach(function(tag) {
+                var par = $("#popup p");
+                for(var i = 0; i < par.length; i++) {
+                    par[i].remove();
+                }
+                data.forEach(function(tag) {
 					console.log(tag);
 					var p = document.createElement("P");
 					p.innerHTML = tag;
@@ -99,12 +108,24 @@
 		f.style.position = "absolute";
 		f.style.top = 0;
 		document.body.appendChild(f);
+        f.addEventListener("change", function(e) {
+            console.log(e);
+            $.ajax({
+                'type': "POST",
+                'enctype': "multipart/form-data",
+                'url': "https://api.clarifai.com/v1/tag/",
+                'data' : {'encoded_data' : "@" +  e.target.value},
+                'headers' : {
+						'Authorization': 'Bearer ' + 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
+				},
+                'success': function(data) {
+                    sendToServer(data);
+                }
+            });
+        });
 		
 		$("#upload-file").on("click", function() {
 			f.click();
-			// $.ajax({
-			// 	'type':
-			// });
 		});
 	});
 	
