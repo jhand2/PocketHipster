@@ -8,13 +8,7 @@ module.exports = function(inputfile) {
 	
 	// array of arrays, keys are words from
 	var words = {};
-	
-	// datastructure used for word/count pairs
-	function Word(w, c) {
-		this.word = w;
-		this.count = c;
-	}
-	
+		
 	// private, please ignore
 	// processes a file
 	function processData(err, data) {
@@ -22,26 +16,20 @@ module.exports = function(inputfile) {
 		var lines = data.split("\n");
 		for(var i = 0; i < lines.length; i++) {
 			var line = lines[i];
-			var parts = line.split(" ");
+			var parts = line.split("\t");
 			if (parts.length < 2) {
 				continue;
 			}
 			var word = parts[0];
-			var tokens = parts[1].split("\t");
-			if (tokens.length > 0) {
-				words[word] = [];
-
-				for(var j = 0; j < tokens.length; j++) {
-					var token = tokens[j];
-					var p = token.split(":::");
-					var count = parseInt(p[1]);
-					if (count == NaN)
-						var w = new Word(p[0], 1);
-					else
-						var w = new Word(p[0], count);
-					words[word].push(w);
-				}
-			}
+			words[word] = [];    
+            for(var j = 1; j < parts.length; j++) {
+                var token = parts[j];
+                var p = token.split(":::");
+                var count = parseInt(p[1]);
+                if (isNaN(count))
+                    count = 1;
+                words[word].push({"word" : p[0], "count" : count});
+            }
 		}
 	}
 	
@@ -70,9 +58,12 @@ module.exports = function(inputfile) {
 	function getNext(word) {
 		var w = words[word];
 		var total = 0;
+        if (w == undefined) {
+            return null;
+        }
 		for(var i = 0; i < w.length; i++) {
-			total += w[i].count;
-		}
+                total += w[i].count;
+        }
 		var countTo = Math.floor(Math.random() * total);
 		for(var i = 0; i < w.length; i++) {
 			countTo -= w[i].count;
