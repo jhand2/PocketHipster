@@ -1,7 +1,7 @@
 
 apiKey = "fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LXZhhRKjWlV4"
 
-minimumFeed = 5000
+minimumFeed = 2000
 
 import urllib2
 import json
@@ -23,6 +23,12 @@ while(len(blogs) < minimumFeed):
             blogs.append(re.sub("(</?[^>]+>)*", "", post));
             lasttime = i[u'timestamp']
     print str(len(blogs)) + "/" + str(minimumFeed)
+
+files = ["freud.txt", "edgar.txt", "edgar2.txt"];
+for fd in files:
+    f = codecs.open(fd, 'r', 'utf-8');
+    blogs.append(f.read());
+    f.close();
 
 words = {}
 words["."] = {}

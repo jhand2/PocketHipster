@@ -1,7 +1,7 @@
 module.exports = function(app) {
 
 	var Markov = require('../markov.js');
-	var datFile = "./public/res/morning_poems.dat";
+    var datFile = "./public/res/mixtape.dat";
 	var markov = Markov(datFile);
 
 	app.post('/api/poems', function(req, res) {
