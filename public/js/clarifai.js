@@ -2,8 +2,8 @@ $(document).ready(
   function(){
       var clarifai = new Clarifai(
           {
-            'clientId': 'YOUR_CLIENT_ID',
-            'clientSecret': 'YOUR_CLIENT_SECRET' 
+            'clientId': 'YNSCk7tVm31FdamgBaSo96DilQhvEXNYxWWT0mIz',
+            'clientSecret': 'NxIHlHgL9U5clqLssqcmFd74ow5vkb9hDYDF8q-Z' 
           }
       );
   }  
