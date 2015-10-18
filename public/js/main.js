@@ -110,7 +110,7 @@
 					'data' : { "url" : $("#paste-url").val() },
 					'type' : "POST",
 					'headers' : {
-						'Authorization': 'Bearer ' + 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
+						'Authorization': 'Bearer ' + 'oFWLr0ktxDvjc0apu569gybxCGAzF1'
 					},
 					'success' : function(data) { sendToServer(data) },
 					'error' : function(err) { console.log(err) }
@@ -132,7 +132,7 @@
                 'url': "https://api.clarifai.com/v1/tag/",
                 'data' : {'encoded_data' : "@" +  e.target.value},
                 'headers' : {
-						'Authorization': 'Bearer ' + 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
+						'Authorization': 'Bearer ' + 'oFWLr0ktxDvjc0apu569gybxCGAzF1'
 				},
                 'success': function(data) {
                     sendToServer(data);
