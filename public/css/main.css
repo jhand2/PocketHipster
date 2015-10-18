@@ -157,7 +157,8 @@ a.selected {
 
 #close-popup {
 	position: absolute;
-	
+	margin-left: 90%;
+
 }
 
 label {
