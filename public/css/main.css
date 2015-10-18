@@ -26,7 +26,7 @@ h1 {
 }
 
 #hipstertitle {
-	color: rgba(89, 165, 165, 1);
+	color: rgba(114, 140, 140, 1);
 	padding-right: 2%;
 	/*padding: 19%;
 	padding-left: 17%;
@@ -43,12 +43,16 @@ h1 {
 .buttons {
 	color: black;
 	/*background: rgba(45, 107, 107, 0.46);*/
-	background: rgba(114, 140, 140, 0.55);
+	background: rgba(114, 140, 140, 1);
 	border: 3px solid white;
 	border-radius: 20px;
 	padding: 2%;
 	margin: 5%;
 	font-variant: small-caps;
+}
+
+.buttons:focus {
+  outline: none;
 }
 
 #upload-url, #upload-file {
