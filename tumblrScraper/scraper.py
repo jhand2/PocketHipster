@@ -25,16 +25,22 @@ while(len(blogs) < minimumFeed):
     print str(len(blogs)) + "/" + str(minimumFeed)
 
 words = {}
+words["."] = {}
 for post in blogs:
     last = "^"
-    for word in re.split("[\n ]+", post):
-        if (last not in words):
-            words[last] = {}
-        if (word not in words[last]):
-            words[last][word] = 1;
+    for line in re.split("[\n.]+", post):
+        for word in line.split(" "):
+            if (last not in words):
+                words[last] = {}
+            if (word not in words[last]):
+                words[last][word] = 1;
+            else:
+                words[last][word] += 1;
+            last = word
+        if (last not in words["."]):
+            words["."][last] = 1
         else:
-            words[last][word] += 1;
-        last = word
+            words["."][last] += 1;
 
 f = codecs.open('poems.dat', 'w', 'utf-8');
 for key in words:
