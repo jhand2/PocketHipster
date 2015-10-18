@@ -47,9 +47,12 @@ module.exports = function(inputfile) {
 	this.createLine = function (word) {
 		sent = word;
 		var n = getNext(word);
-		while(n != null) {
+        var max = Math.round(Math.random() * 5 + 7);
+        var c = 0;
+		while(n != null && c < max) {
 			sent += " " + n;
 			n = getNext(n);
+            c++;
 		}
 		return sent;
 	}
