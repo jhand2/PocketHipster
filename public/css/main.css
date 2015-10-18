@@ -4,6 +4,7 @@
 body {
 	margin: 0;
 	font-family: 'Josefin Slab', serif;
+
 }
 
 .input-group {
@@ -16,6 +17,23 @@ body {
 
 h1 {
 	font-size: 46px;
+}
+
+.rect {
+	width: 150px;
+	height: 150px;
+	border-radius: 150px;
+}
+
+.other {
+	width: 80%;
+	margin: auto;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+.featurette {
+	margin: 5%;
 }
 
 #header {
@@ -53,6 +71,10 @@ h1 {
 	font-variant: small-caps;
 }
 
+.other {
+	width: 70%;
+}
+
 .buttons:focus {
   outline: none;
 }
@@ -70,6 +92,14 @@ h1 {
 #paste-url {
 	margin: auto;
 	width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+	.rect {
+		width: 200px;
+		height: 200px;
+		border-radius: 150px;
+	}
 }
 
 @media screen and (min-width: 1200px) {
