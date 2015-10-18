@@ -26,7 +26,9 @@ h1 {
 }
 
 #hipstertitle {
+	/*color: rgba(89, 165, 165, 1);*/
 	color: rgba(114, 140, 140, 1);
+	text-shadow: 0px 0px 3px #000;
 	padding-right: 2%;
 	/*padding: 19%;
 	padding-left: 17%;
@@ -72,6 +74,10 @@ h1 {
 
 	#hipstertitle {
 		color: white;
+	}
+
+	.buttons {
+		background: rgba(114, 140, 140, 0.55);
 	}
 }
 
