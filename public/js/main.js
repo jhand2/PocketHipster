@@ -101,12 +101,24 @@
 		f.style.position = "absolute";
 		f.style.top = 0;
 		document.body.appendChild(f);
+        f.addEventListener("change", function(e) {
+            console.log(e);
+            $.ajax({
+                'type': "POST",
+                'enctype': "multipart/form-data",
+                'url': "https://api.clarifai.com/v1/tag/",
+                'data' : {'encoded_data' : "@" +  e.target.value},
+                'headers' : {
+						'Authorization': 'Bearer ' + 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
+				},
+                'success': function(data) {
+                    sendToServer(data);
+                }
+            });
+        });
 		
 		$("#upload-file").on("click", function() {
 			f.click();
-			// $.ajax({
-			// 	'type':
-			// });
 		});
 	});
 	
