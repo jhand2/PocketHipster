@@ -47,24 +47,8 @@
 		});
 
 		$("#upload-url").on("click", function() {
-			var popup = $('#popup');
-			popup.children('#uppicture').remove();
-			popup.append('<img id="uppicture" src='+ $("#paste-url").val() +' />');
-			//ajax call to clarifai
-			console.log("test");
-			$.ajax( 
-				{
-					'url' : "https://api.clarifai.com/v1/tag/",
-					'data' : { "url" : $("#paste-url").val() },
-					'type' : "POST",
-					'headers' : {
-						'Authorization': 'Bearer ' + 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
-					},
-					'success' : function(data) { sendToServer(data) },
-					'beforeSend' : function() { console.log("before?")},
-					'error' : function(err) { console.log(err) }
-				}
-			);
+            newQuery();
+        });
 
 			//ajax call to our node server
 			function sendToServer(data) {
@@ -106,8 +90,34 @@
 				});
 	    		return false;
 			}
-		});
+
+            document.getElementById("paste-url").addEventListener("keydown", function(e) {
+                if (e.keyCode ==13) {
+                    newQuery();
+                    e.preventDefault();
+                    return false;
+                }
+            });
 		
+        function newQuery() { 
+			var popup = $('#popup');
+			popup.children('#uppicture').remove();
+			popup.append('<img id="uppicture" src='+ $("#paste-url").val() +' />');
+			//ajax call to clarifai
+			$.ajax( 
+				{
+					'url' : "https://api.clarifai.com/v1/tag/",
+					'data' : { "url" : $("#paste-url").val() },
+					'type' : "POST",
+					'headers' : {
+						'Authorization': 'Bearer ' + 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB'
+					},
+					'success' : function(data) { sendToServer(data) },
+					'error' : function(err) { console.log(err) }
+				}
+			);
+        }
+
 		var f = document.createElement("input");
 		f.type = "file";
 		f.style.visibility = "hidden";
@@ -133,7 +143,5 @@
 		$("#upload-file").on("click", function() {
 			f.click();
 		});
-	});
-	
-	
+    });
 })();
