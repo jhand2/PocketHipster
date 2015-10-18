@@ -47,8 +47,8 @@
 
 		$("#upload-url").on("click", function() {
 			var popup = $('#popup');
+			popup.children('#uppicture').remove();
 			popup.append('<img id="uppicture" src='+ $("#paste-url").val() +' />');
-			$('#uppicture').css('max-width', '90%');
 			//ajax call to clarifai
 			console.log("test");
 			$.ajax( 
@@ -81,10 +81,11 @@
 				// img = "url('" + img + "');";
 				//$('.messagepopup').style.backgroundImage = img;
 
-				var blur = $('.blur');//.blur();
-				blur.blur();
+				// var blur = $('.blur');//.blur();
+				// blur.blur();
 
 				var popup = $('#popup');
+				popup.blur();
                 var par = $("#popup p");
                 for(var i = 0; i < par.length; i++) {
                     par[i].remove();
