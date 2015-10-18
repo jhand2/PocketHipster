@@ -1,6 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300italic,300);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
+
+
 body {
 	margin: 0;
-	font-family: arial, sans-serif;
+	font-family: 'Josefin Slab', serif;
 }
 
 .btn {
@@ -17,4 +22,26 @@ body {
 
 h1 {
 	font-size: 46px;
+}
+
+#header {
+	background-image: url("../image/background.jpg");
+	background-size: cover;
+	background-repeat: none;
+}
+
+#hipstertitle {
+	color: white;
+	padding: 19%;
+	padding-left: 17%;
+	padding-bottom: 5%;
+}
+
+#url {
+	background: transparent;
+	border: 3px solid black;
+	border-radius: 20px;
+	color: white;
+	padding-left: 5%;
+	padding-right: 5%;
 }
