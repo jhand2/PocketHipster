@@ -70,6 +70,9 @@
 			}
 
 			var initPopup = function(data) {
+				var img = $('upload-url').innerHTML;
+				img = "url('" + img + "');";
+				$('.messagepopup').style.backgroundImage = img;
 				var popup = $('#popup');
 				popup.innerHTML = "";
 				data.forEach(function(tag) {
