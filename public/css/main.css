@@ -83,7 +83,7 @@ h1 {
   outline: none;
 }
 
-.buttons:hover, .buttons:active {
+.buttons:hover, .buttons:visited, .buttons:active {
 	background: rgba(114, 140, 140, 1);
 	border: 3px solid white;
 }
@@ -140,10 +140,6 @@ a.selected {
   z-index:100;
 }
 
-#close {
-	max-height: 20px;
-}
-
 .messagepop {
 	background-color:#FFFFFF;
 	border:1px solid #999999;
@@ -154,16 +150,18 @@ a.selected {
 	margin-top: 15px;
 	margin-left: 25%;
 	text-align:left;
-	width:50%;
+	width: 50%;
 	z-index:50;
 	padding: 25px 25px 20px;
 }
 
 #close-popup {
-	position: absolute;
-	margin-left: 90%;
-	background: transparent;
+	max-height: 20px;
+	float: right;
+}
 
+#popup {
+	overflow: hidden;
 }
 
 label {
