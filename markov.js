@@ -46,12 +46,17 @@ module.exports = function(inputfile) {
 	// creates a markov chain starting with word
 	this.createLine = function (word) {
 		sent = word;
-		var n = getNext(word);
-        var max = Math.round(Math.random() * 5 + 7);
+		var n = word;;
+        var max = Math.round(Math.random() * 5 + 12);
         var c = 0;
-		while(n != null && c < max) {
-			sent += " " + n;
+        var dontStop = ["to", "the", "that", "a", "of", "be", "are", 
+            "at", "as", "am", "they", "my", "and", "on", "but", "or", "i",
+            "i’ve"];
+		while(n != null && (dontStop.indexOf(n) != -1 || c < max)) {
 			n = getNext(n);
+            if (n == null)
+                return sent;
+			sent += " " + n;
             c++;
 		}
 		return sent;
