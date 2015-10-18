@@ -23,14 +23,14 @@ h1 {
 }
 
 #header {
-	background-image: url("../image/background.jpg");
+	background-image: url("../image/background-sm.jpg");
 	background-size: cover;
 	background-repeat: none;
 	overflow: hidden;
 }
 
 #hipstertitle {
-	color: white;
+	color: rgba(89, 165, 165, 1);
 	padding-right: 2%;
 	/*padding: 19%;
 	padding-left: 17%;
@@ -46,7 +46,8 @@ h1 {
 
 .buttons {
 	color: black;
-	background: rgba(45, 107, 107, 0.46);
+	/*background: rgba(45, 107, 107, 0.46);*/
+	background: rgba(114, 140, 140, 0.55);
 	border: 3px solid white;
 	border-radius: 20px;
 	padding: 1%;
@@ -59,9 +60,22 @@ h1 {
 	padding: 2%;
 	padding-left: 10%;
 	padding-right: 10%;
+	width: 80%;
+	text-align: center;
 }
 
 #paste-url {
 	margin: auto;
+	width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+	#header {
+		background-image: url("../image/background.jpg");
+	}
+
+	#hipstertitle {
+		color: white;
+	}
 }
 
