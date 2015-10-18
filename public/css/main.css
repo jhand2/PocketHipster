@@ -57,6 +57,11 @@ h1 {
   outline: none;
 }
 
+.buttons:hover {
+	background: rgba(114, 140, 140, 1);
+	border: 3px solid white;
+}
+
 #upload-url, #upload-file {
 	width: 80%;
 	text-align: center;
@@ -78,6 +83,11 @@ h1 {
 
 	.buttons {
 		background: rgba(114, 140, 140, 0.55);
+	}
+
+	.buttons:hover {
+		background: rgba(114, 140, 140, 0.55);
+		border: 3px solid white;
 	}
 }
 
