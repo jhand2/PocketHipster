@@ -57,7 +57,21 @@
 				'data' : { "data" : data.results[0].result.tag.classes },
 				'dataType' : 'json',
 				'method' : "POST",
-				'success' : function(data) { initPopup(data) }
+				'success' : function(data) { initPopup(data),
+				'error' : function(e) {
+					var popup = $('#popup');
+					popup.blur();
+		            var par = $("#popup p");
+		            for(var i = 0; i < par.length; i++) {
+		                par[i].remove();
+		            }
+
+		            if (data.length == 0) {
+		            	var p = document.createElement("P");
+						p.innerHTML = "Sorry, we ran out of Clarifai API calls :(";
+						popup.append(p);
+		            }
+				} }
 			});
 		}
 
@@ -74,19 +88,6 @@
             var par = $("#popup p");
             for(var i = 0; i < par.length; i++) {
                 par[i].remove();
-            }
-
-            if (data.length == 0) {
-            	var p = document.createElement("P");
-				p.innerHTML = "Sorry, we ran out of Clarifai API calls :(";
-				popup.append(p);
-				var btn = $('#upload-url');
-	    		if(btn.hasClass('selected')) {
-	     			// deselect($(this));               
-	    		} else {
-	      			btn.addClass('selected');
-	      			$('.pop').slideFadeToggle();
-	    		}
             }
 
             data.forEach(function(tag) {
