@@ -57,7 +57,7 @@
 				'data' : { "data" : data.results[0].result.tag.classes },
 				'dataType' : 'json',
 				'method' : "POST",
-				'success' : function(data) { initPopup(data),
+				'success' : function(data) { initPopup(data) },
 				'error' : function(e) {
 					var popup = $('#popup');
 					popup.blur();
@@ -71,7 +71,7 @@
 						p.innerHTML = "Sorry, we ran out of Clarifai API calls :(";
 						popup.append(p);
 		            }
-				} }
+				}
 			});
 		}
 
