@@ -143,5 +143,26 @@
 		$("#upload-file").on("click", function() {
 			f.click();
 		});
+
+        window.addEventListener("click", function(e) {
+            var deep = document.createElement("div");
+            deep.classList.add("deep");
+            deep.innerHTML = "#DEEP";
+            deep.style.top = e.pageY + "px";
+            deep.style.left = e.pageX + "px";
+            deep.stage = 0;
+            document.body.appendChild(deep);
+            setTimeout(deeper, 100, deep);
+        });
+
+        function deeper(ele) {
+            ele.style.color = "rgba(0, 0, 0, " + (100 - ele.stage) / 100 + ")";
+            ele.stage+= 5;
+            if (ele.stage >= 100) {
+                ele.parentNode.removeChild(ele);
+            } else {
+                setTimeout(deeper, 100, ele);
+            }
+        }
     });
 })();
