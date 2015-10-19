@@ -59,23 +59,28 @@
 				'method' : "POST",
 				'success' : function(data) { initPopup(data) },
 				'error' : function(e) {
-					var popup = $('#popup');
-					popup.blur();
-		            var par = $("#popup p");
-		            for(var i = 0; i < par.length; i++) {
-		                par[i].remove();
-		            }
-
-		            if (data.length == 0) {
-		            	var p = document.createElement("P");
-						p.innerHTML = "Sorry, we ran out of Clarifai API calls :(";
-						popup.append(p);
-		            }
+					reportClarifaiError();
 				}
 			});
 		}
 
+		function reportClarifaiError() {
+			console.log("error");
+			var popup = $('#popup');
+			popup.blur();
+            var par = $("#popup p");
+            for(var i = 0; i < par.length; i++) {
+                par[i].remove();
+            }
+
+            
+        	var p = document.createElement("P");
+			p.innerHTML = "Sorry, we ran out of Clarifai API calls :(";
+			popup.append(p);
+		}
+
 		var initPopup = function(data) {
+			console.lof("Success");
 			var img = $('upload-url').innerHTML;
 			// img = "url('" + img + "');";
 			//$('.messagepopup').style.backgroundImage = img;
@@ -127,7 +132,10 @@
 						'Authorization': 'Bearer ' + 'oFWLr0ktxDvjc0apu569gybxCGAzF1'
 					},
 					'success' : function(data) { sendToServer(data) },
-					'error' : function(err) { console.log(err) }
+					'error' : function(err) {
+						console.log(err);
+						reportClarifaiError();
+					}
 				}
 			);
         }
