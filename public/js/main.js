@@ -1,7 +1,13 @@
+var clientId = "r_g_UZdbr6k9kEHi6Kjinpvj-G9OQl7IqeWJgjdG";
+var clientSecret = "mnIb1ZLkF6xA-qRM2TxpdQCIrag44SKeTYEmL_aT";
+var accessToken = "";
+
 (function() {
 	window.addEventListener("load", function() {
 		// this.accessToken = 'g9h6FG0W7avkgKz2F0yfz8Lh3N71SB';
 		// adding multiple tag lines....
+
+		getToken();
 
 		function deselect(e) {
   			$('.pop').slideFadeToggle(function() {
@@ -65,6 +71,15 @@
 		}
 
 		function reportClarifaiError() {
+			reportError("Sorry :( Your access token may have expired. Try reloading the page!");
+		}
+
+		function tryAgain() {
+			reportError("Sorry, try again!");
+
+		}
+
+		function reportError(body) {
 			console.log("error");
 			var popup = $('#popup');
 			popup.blur();
@@ -75,12 +90,12 @@
 
             
         	var p = document.createElement("P");
-			p.innerHTML = "Sorry, we ran out of Clarifai API calls :(";
+			p.innerHTML = body;
 			popup.append(p);
 		}
 
 		var initPopup = function(data) {
-			console.lof("Success");
+			console.log("Success");
 			var img = $('upload-url').innerHTML;
 			// img = "url('" + img + "');";
 			//$('.messagepopup').style.backgroundImage = img;
@@ -126,12 +141,33 @@
 			$.ajax( 
 				{
 					'url' : "https://api.clarifai.com/v1/tag/",
-					'data' : { "url" : $("#paste-url").val() },
+					'data' : {
+						"url" : $("#paste-url").val()
+					},
 					'type' : "POST",
 					'headers' : {
-						'Authorization': 'Bearer ' + 'oFWLr0ktxDvjc0apu569gybxCGAzF1'
+						'Authorization': 'Bearer ' + accessToken
 					},
 					'success' : function(data) { sendToServer(data) },
+					'error' : function(err) {
+						console.log(err);
+						reportClarifaiError();
+					}
+				}
+			);
+        }
+
+        function getToken() {
+        	$.ajax( 
+				{
+					'url' : "https://api.clarifai.com/v1/token/",
+					'data' : { 
+						"grant_type" : "client_credentials",
+						"client_id" : clientId,
+						"client_secret" : clientSecret
+					},
+					'type' : "POST",
+					'success' : function(data) { accessToken = data["access_token"] },
 					'error' : function(err) {
 						console.log(err);
 						reportClarifaiError();
@@ -154,7 +190,7 @@
                 'url': "https://api.clarifai.com/v1/tag/",
                 'data' : {'encoded_data' : "@" +  e.target.value},
                 'headers' : {
-						'Authorization': 'Bearer ' + 'oFWLr0ktxDvjc0apu569gybxCGAzF1'
+					'Authorization': 'Bearer ' + accessToken
 				},
                 'success': function(data) {
                     sendToServer(data);
