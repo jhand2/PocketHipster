@@ -50,54 +50,67 @@
             newQuery();
         });
 
-			//ajax call to our node server
-			function sendToServer(data) {
-				$.ajax( "/api/poems",
-				{
-					'data' : { "data" : data.results[0].result.tag.classes },
-					'dataType' : 'json',
-					'method' : "POST",
-					'success' : function(data) { initPopup(data) }
-				});
-			}
+		//ajax call to our node server
+		function sendToServer(data) {
+			$.ajax( "/api/poems",
+			{
+				'data' : { "data" : data.results[0].result.tag.classes },
+				'dataType' : 'json',
+				'method' : "POST",
+				'success' : function(data) { initPopup(data) }
+			});
+		}
 
-			var initPopup = function(data) {
-				var img = $('upload-url').innerHTML;
-				// img = "url('" + img + "');";
-				//$('.messagepopup').style.backgroundImage = img;
+		var initPopup = function(data) {
+			var img = $('upload-url').innerHTML;
+			// img = "url('" + img + "');";
+			//$('.messagepopup').style.backgroundImage = img;
 
-				// var blur = $('.blur');//.blur();
-				// blur.blur();
+			// var blur = $('.blur');//.blur();
+			// blur.blur();
 
-				var popup = $('#popup');
-				popup.blur();
-                var par = $("#popup p");
-                for(var i = 0; i < par.length; i++) {
-                    par[i].remove();
-                }
-                data.forEach(function(tag) {
-					console.log(tag);
-					var p = document.createElement("P");
-					p.innerHTML = tag;
-					popup.append(p);
-					var btn = $('#upload-url');
-		    		if(btn.hasClass('selected')) {
-		     			// deselect($(this));               
-		    		} else {
-		      			btn.addClass('selected');
-		      			$('.pop').slideFadeToggle();
-		    		}
-				});
-	    		return false;
-			}
+			var popup = $('#popup');
+			popup.blur();
+            var par = $("#popup p");
+            for(var i = 0; i < par.length; i++) {
+                par[i].remove();
+            }
 
-            document.getElementById("paste-url").addEventListener("keydown", function(e) {
-                if (e.keyCode ==13) {
-                    newQuery();
-                    e.preventDefault();
-                    return false;
-                }
-            });
+            if (data.length == 0) {
+            	var p = document.createElement("P");
+				p.innerHTML = "Sorry, we ran out of Clarifai API calls :(";
+				popup.append(p);
+				var btn = $('#upload-url');
+	    		if(btn.hasClass('selected')) {
+	     			// deselect($(this));               
+	    		} else {
+	      			btn.addClass('selected');
+	      			$('.pop').slideFadeToggle();
+	    		}
+            }
+
+            data.forEach(function(tag) {
+				var p = document.createElement("P");
+				p.innerHTML = tag;
+				popup.append(p);
+				var btn = $('#upload-url');
+	    		if(btn.hasClass('selected')) {
+	     			// deselect($(this));               
+	    		} else {
+	      			btn.addClass('selected');
+	      			$('.pop').slideFadeToggle();
+	    		}
+			});
+    		return false;
+		}
+
+        document.getElementById("paste-url").addEventListener("keydown", function(e) {
+            if (e.keyCode ==13) {
+                newQuery();
+                e.preventDefault();
+                return false;
+            }
+        });
 		
         function newQuery() { 
 			var popup = $('#popup');
